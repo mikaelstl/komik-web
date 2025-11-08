@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Grid = styled.div`
+const Grid = styled.div`
   display: grid;
   grid-template-areas: 
     "k-navbar k-appbar"
@@ -11,6 +11,28 @@ export const Grid = styled.div`
   height: 100%;
 `;
 
-export const Content = styled.div`
+const Main = styled.div`
   grid-area: k-library-content;
+
+  display: flex;
+  justify-content: center;
+  
+  overflow: scroll;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  
+  width: 57%; height: fit-content;
+  
+  padding-top: 40px;
+  padding-bottom: 20px;
 `
+
+export {
+  Grid,
+  Main,
+  Content
+}

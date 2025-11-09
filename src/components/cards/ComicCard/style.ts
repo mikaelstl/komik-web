@@ -14,14 +14,7 @@ const Cover = styled.div`
   width: 150px; height: 195px;
 `;
 
-const Infos = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
 export {
   Container,
   Cover,
-  Infos
 }

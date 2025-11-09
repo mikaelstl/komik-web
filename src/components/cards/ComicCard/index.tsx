@@ -1,7 +1,7 @@
-import { Subtitle } from "../../base/Subtitle";
-import { Title } from "../../base/Title";
+import { useNavigate } from "react-router-dom";
 import { ComicCover } from "../ComicCover";
-import { Container, Cover, Infos } from "./style";
+import { Container, Cover } from "./style";
+import { ComicInfos } from "../../ComicInfos";
 
 interface ComicCardProps {
   title: string;
@@ -17,18 +17,20 @@ export function ComicCard({
   edition,
   cover,
 }: ComicCardProps) {
+  const navigate = useNavigate();
+
   return (
-    <Container className="k-comic-v-card">
+    <Container className="k-comic-v-card"
+      onClick={() => navigate("/reader")}
+    >
       <Cover>
         <ComicCover image={cover}/>
       </Cover>
-      <Infos>
-        <div>
-          <Title>{title}</Title>
-          <Subtitle>{subtitle}</Subtitle>
-        </div>
-        <Subtitle>#{edition}</Subtitle>
-      </Infos>
+      <ComicInfos
+        title={title}
+        subtitle={subtitle}
+        edition={edition}
+      />
     </Container>
   )
 }

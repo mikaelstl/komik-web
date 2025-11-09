@@ -1,12 +1,42 @@
 import { BookOpenIcon } from "@heroicons/react/16/solid";
-import { Button } from "./style";
+import { Button, Container } from "./style";
 import { Title } from "../../base/Title";
+import { useRef } from "react";
+import { extractComicInfos } from "../../../service/utils/extractComicInfos";
+import { extractComicCover } from "../../../service/utils/extractComicCover";
+import { database } from "../../../service/db/db";
 
 export function ReadBtn() {
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleClick = () => {
+    fileInputRef.current?.click();
+  }
+
+  const selectFile = async (evt: React.ChangeEvent<HTMLInputElement>) => {
+    evt.preventDefault();
+
+    const file = evt.target.files?.[0];
+    
+    const comic = extractComicInfos(file?.name!);
+    comic.cover = await extractComicCover(file!) ?? '';
+
+    await database.comics.add(comic);
+  }
+
   return (
-    <Button className="k-read-btn">
-      <BookOpenIcon width={20} />
-      <Title>Read</Title>
-    </Button>
+    <Container className="k-read-btn">
+      <input
+        type="file"
+        ref={fileInputRef}
+        onChange={selectFile}
+        accept="cbz, cbr"
+        style={{ display: 'none' }}
+      />
+      <Button onClick={handleClick}>
+        <BookOpenIcon width={20} />
+        <Title>Read</Title>
+      </Button>
+    </Container>
   )
 }

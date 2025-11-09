@@ -15,9 +15,11 @@ const Container = styled.div`
   border-radius: 4px;
 
   background-color: ${Palette.card};
+
+  overflow: hidden;
 `;
 
-const Image = styled.image`
+const Image = styled.img`
   width: 100%;
   height: 100%;
 `;

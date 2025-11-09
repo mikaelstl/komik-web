@@ -12,7 +12,7 @@ export function ComicCover({
   return (
     <Container className="k-comic-cover">
       {
-        image || image === '' ? <Image/> : <BookOpenIcon width={32} fill={Palette.comic_icon}/>
+        image || image === '' ? <Image src={image}></Image> : <BookOpenIcon width={32} fill={Palette.comic_icon}/>
       }
     </Container>
   )

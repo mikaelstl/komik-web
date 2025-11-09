@@ -18,7 +18,7 @@ export function ComicCard({
   cover,
 }: ComicCardProps) {
   const navigate = useNavigate();
-
+  
   return (
     <Container className="k-comic-v-card"
       onClick={() => navigate("/reader")}

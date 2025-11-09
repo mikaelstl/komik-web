@@ -9,7 +9,7 @@ const Content = styled.div`
   aside {
     padding: 12px;
   }
-`
+`;
 
 const Cover = styled.main`
   width: 30%; height: 100%;
@@ -20,9 +20,7 @@ const Infos = styled.aside`
   gap: 30px;
 
   width: 12%;
-
-  border: 1px solid red;
-`
+`;
 
 const Actions = styled.aside`
   display: flex;
@@ -36,7 +34,7 @@ const Actions = styled.aside`
 const ChangePage = styled.div`
   display: flex;
   gap: 4px;
-`
+`;
 
 export {
   Cover,

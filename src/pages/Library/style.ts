@@ -25,10 +25,15 @@ const Content = styled.div`
   flex-wrap: wrap;
   gap: 40px;
   
-  width: 57%; height: fit-content;
+  width: fit-content;
+  max-width: 57%;
+  
+  height: fit-content;
   
   padding-top: 40px;
   padding-bottom: 20px;
+
+  border: 1px solid red;
 `
 
 export {

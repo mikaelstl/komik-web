@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Content = styled.div`
+  position: relative;
+
   display: flex;
   justify-content: space-between;
 
@@ -9,17 +11,34 @@ const Content = styled.div`
   aside {
     padding: 12px;
   }
-`;
+
+  `;
 
 const Cover = styled.main`
-  width: 30%; height: 100%;
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: block;
+  overflow: auto;
+
+  width: auto;
+  height: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  margin: 0 auto;
 `;
 
 const Infos = styled.aside`
   display: flex;
   gap: 30px;
 
-  width: 12%;
+  min-width: 16%;
+
+  z-index: 9999;
 `;
 
 const Actions = styled.aside`

@@ -10,6 +10,8 @@ interface ComicCardProps {
   edition: string;
 
   cover?: Blob;
+
+  ckey: string;
 }
 
 export function ComicCard({
@@ -17,6 +19,7 @@ export function ComicCard({
   subtitle,
   edition,
   cover,
+  ckey
 }: ComicCardProps) {
   const navigate = useNavigate();
 
@@ -26,11 +29,11 @@ export function ComicCard({
     if (cover) {
       setCoverURL(URL.createObjectURL(cover))
     }
-  },[])
+  },[]);
 
   return (
     <Container className="k-comic-v-card"
-      onClick={() => navigate("/reader")}
+      onClick={() => navigate(`/reader/${ckey}`)}
     >
       <Cover>
         <ComicCover image={coverURL}/>

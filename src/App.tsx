@@ -9,7 +9,7 @@ function App() {
         <Route path="*" element={<Navigate to="/library" replace />} />
 
         <Route path="/library" element={<Library/>}/>
-        <Route path="/reader" element={<Reader/>}/>
+        <Route path="/reader/:comickey" element={<Reader/>}/>
       </Routes>
     </BrowserRouter>
   )

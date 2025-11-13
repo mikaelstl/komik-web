@@ -33,6 +33,8 @@ export function Library() {
                     subtitle={comic.subtitle}
                     edition={comic.edition}
                     cover={comic.cover}
+
+                    ckey={encodeURIComponent(comic.key)}
                   />
                 )
                 : <ItalicTitle>Without comics</ItalicTitle>

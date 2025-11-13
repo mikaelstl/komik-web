@@ -20,8 +20,15 @@ const Container = styled.div`
 `;
 
 const Image = styled.img`
+  /* display: block;
+  object-fit: none;
+  image-rendering: auto; */
+
   width: 100%;
   height: 100%;
+
+  max-width: none;
+  max-height: none;
 `;
 
 export {

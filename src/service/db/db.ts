@@ -9,5 +9,5 @@ export const database = new Dexie('komikDB') as Dexie & {
 
 database.version(1).stores({
   comics: '++id, &key, title, subtitle, edition, cover, path, reading',
-  files: '++id, &comicKey, filename, subtitle, edition, cover, path, reading'
+  files: '++id, &comicKey, filename, blob'
 })

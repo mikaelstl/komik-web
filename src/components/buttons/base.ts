@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Palette } from "../../assets/Palette";
 
+export interface BtnProps {
+  onClick: () => void
+}
+
 interface ChangePageBtnProps {
   left?: boolean;
   right?: boolean;

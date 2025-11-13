@@ -1,6 +1,6 @@
 export interface ComicFile {
   id?: number;
-  comicKey: number;
+  comicKey: string;
   filename: string;
   blob: Blob
 }

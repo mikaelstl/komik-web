@@ -23,15 +23,15 @@ export function ReadBtn() {
       const comic = extractComicInfos(file?.name!);
       comic.cover = await extractComicCover(file!) ?? '';
 
-      const comicId = await database.comics.add(comic);
+      await database.comics.add(comic);
 
       const comicfile: ComicFile = {
         filename: file?.name ?? 'Not name',
-        comicKey: comicId ?? NaN,
+        comicKey: comic.key,
         blob: file
       }
 
-      const fileID = await database.files.add(comicfile);
+      await database.files.add(comicfile);
     } catch (error: any) {
       console.log(error);
       if (error.name === 'ConstraintError') {

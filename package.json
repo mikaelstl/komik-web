@@ -11,8 +11,10 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@leosingleton/fim-browser": "^2.7.0",
     "@zip.js/zip.js": "^2.8.10",
     "axios": "^1.13.2",
+    "blueimp-load-image": "^5.16.0",
     "dexie": "^4.2.1",
     "dexie-react-hooks": "^4.2.0",
     "form-data": "^4.0.4",

@@ -29,11 +29,11 @@ export function Library() {
             {
               haveComics
                 ? comics?.map(comic => <ComicCard key={comic.id}
-                  title={comic.title}
-                  subtitle={comic.subtitle}
-                  edition={comic.edition}
-                  cover={comic.cover ?? ''}
-                />
+                    title={comic.title}
+                    subtitle={comic.subtitle}
+                    edition={comic.edition}
+                    cover={comic.cover}
+                  />
                 )
                 : <ItalicTitle>Without comics</ItalicTitle>
             }

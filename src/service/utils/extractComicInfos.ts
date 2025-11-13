@@ -8,7 +8,8 @@ export function extractComicInfos(filename: string): Comic {
     title,
     subtitle,
     edition,
-    cover: '',
+    cover: null,
+    key: filename,
     reading: true
   }
 }

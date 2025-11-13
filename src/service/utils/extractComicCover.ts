@@ -7,7 +7,7 @@ export async function extractComicCover(file: File) {
     alert('Arquivo não suportado');
   }
 
-  const reader = new ZipReader(new BlobReader(file));
+  const reader = new ZipReader(new BlobReader(file), { useWebWorkers: false });
   
   try {
     const entries = await reader.getEntries();
@@ -16,15 +16,19 @@ export async function extractComicCover(file: File) {
                     .filter(e => e.filename.match(supportedTypes) && !e.directory)
                     .sort((a, b) => a.filename.localeCompare(b.filename))[0];
 
-    let cover;
-    if (entry.getData) {
-      const blob = await entry.getData(new BlobWriter(entry.mimeType));
-      cover = URL.createObjectURL(blob)
+    console.log(entry);
+    
+    if (!entry) {
+      alert("Nenhuma imagem encontrada no arquivo.");
+      return null;
     }
-
-    return cover;
+    
+    const blob = await entry.getData(new BlobWriter(entry.mimeType));
+    return blob;
   } catch (error) {
-    alert('ERRO: '+error);
+    console.error("Erro ao extrair capa:", error);
+    
+    throw error;
   } finally {
     await reader.close();
   }

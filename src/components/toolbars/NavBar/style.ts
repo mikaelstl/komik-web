@@ -5,13 +5,21 @@ const Nav = styled.nav`
   grid-area: k-navbar;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
   justify-content: center;
   gap: 12px;
 
-  width: 95px; height: 100%;
-
-  border-right: 1px solid ${Palette.details};
+  &.horizontal {
+    flex-direction: row;
+    height: 95px; width: 100%;
+    border-top: 1px solid ${Palette.details};
+  }
+  
+  &.vertical {
+    flex-direction: column;
+    width: 95px; height: 100%;
+    border-right: 1px solid ${Palette.details};
+  }
 `;
 
 const NavItem = styled.button`

@@ -15,6 +15,15 @@ export function ReaderView({
 
   const [src, setSource] = useState<string>();
   const [loading, setLoading] = useState<boolean>(false);
+
+  const [height, setHeight] = useState<number>(100);
+  const zoom = 1.2;
+
+  const onZoom = (evt: React.WheelEvent) => {
+    evt.deltaY > 0
+      ? setHeight(prev => prev/zoom)
+      : setHeight(prev => prev*zoom)
+  }
   
   useEffect(() => {
     setLoading(true);
@@ -33,6 +42,12 @@ export function ReaderView({
   return (
     <Cover
       ref={coverRef}
+      style={{
+        width: 'auto',
+        height: `${height}%`,
+        transition: "width 0.1s, height 0.1s"
+      }}
+      onWheel={onZoom}
     >
       { loading
         ? <LoadingSpinner />

@@ -26,7 +26,7 @@ export function Reader() {
 
   const [pages, setPages] = useState<Blob[]>([]);
   const [actualPage, setActualPage] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const onCloseReader = async () => {
     navigate('..');

@@ -20,15 +20,12 @@ const Cover = styled.main`
   transform: translateX(-50%);
 
   display: block;
-  overflow: auto;
 
-  width: auto;
-  height: 100%;
-  max-height: 100%;
+  min-width: auto;
+  max-width: auto;
 
-  object-fit: contain;
-
-  margin: 0 auto;
+  min-height: 50%;
+  max-height: 150%;
 `;
 
 const Infos = styled.aside`

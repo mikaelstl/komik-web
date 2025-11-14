@@ -22,7 +22,7 @@ export function Library() {
   return (
     <Screen>
       <Grid>
-        <Navbar />
+        <Navbar axis="vertical"/>
         <Appbar />
         <Main>
           <Content>

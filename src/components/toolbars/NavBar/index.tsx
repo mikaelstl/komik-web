@@ -3,9 +3,15 @@ import { Nav, NavItem } from "./style";
 import { Text } from "../../base/Text";
 import { BookmarkIcon } from "@heroicons/react/20/solid";
 
-export function Navbar() {
+interface NavbarProps {
+  axis: 'horizontal' | 'vertical'
+}
+
+export function Navbar({
+  axis
+}: NavbarProps) {
   return (
-    <Nav className="k-navbar">
+    <Nav className={`k-navbar ${axis}`}>
       <NavItem className="k-navitem">
         <BookOpenIcon width={22}/>
         <Text bold>Library</Text>

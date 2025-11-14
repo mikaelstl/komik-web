@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Content = styled.div`
+const Main = styled.div`
   position: relative;
 
   display: flex;
@@ -11,8 +11,7 @@ const Content = styled.div`
   aside {
     padding: 12px;
   }
-
-  `;
+`;
 
 const Cover = styled.main`
   position: absolute;
@@ -59,6 +58,6 @@ export {
   Cover,
   Infos,
   Actions,
-  Content,
+  Main,
   ChangePage
 }

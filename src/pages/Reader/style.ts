@@ -4,7 +4,8 @@ const Main = styled.div`
   position: relative;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
 
   height: 100%;
 
@@ -13,11 +14,18 @@ const Main = styled.div`
   }
 `;
 
+const Container = styled.div`
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+`;
+
 const Cover = styled.main`
   position: absolute;
-
-  left: 50%;
-  transform: translateX(-50%);
 
   display: block;
 
@@ -56,5 +64,6 @@ export {
   Infos,
   Actions,
   Main,
-  ChangePage
+  ChangePage,
+  Container
 }

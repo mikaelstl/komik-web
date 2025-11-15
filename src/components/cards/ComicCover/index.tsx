@@ -1,7 +1,6 @@
 import { BookOpenIcon } from "@heroicons/react/16/solid";
 import { Container, Image } from "./style";
 import { Palette } from "../../../assets/Palette";
-import { useEffect, useRef, useState } from "react";
 
 interface ComicCoverProps {
   image?: string;

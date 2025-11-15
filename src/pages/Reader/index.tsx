@@ -14,6 +14,7 @@ import { ReaderView } from "./ReaderView";
 import { formatNumber } from "../../service/utils/formatNumber";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import type { ReadingComic } from "../../service/models/Reading";
+import { useChangePage } from "../../hooks/useChangePage";
 
 export function Reader() {
   const navigate = useNavigate();
@@ -56,6 +57,11 @@ export function Reader() {
     }
   }
 
+  useChangePage(
+    () => toPreviousPage(),
+    () => toNextPage()
+  );
+
   const fetchPages = async () => {
     try {
       console.log(comic);
@@ -81,7 +87,11 @@ export function Reader() {
     };
 
     fetchPages();
-  }, [comic])
+
+    return () => {
+      onCloseReader();
+    } 
+  }, [comic]);
 
   const Content = () => {
     return (

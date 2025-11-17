@@ -64,8 +64,6 @@ export function Reader() {
 
   const fetchPages = async () => {
     try {
-      console.log(comic);
-
       const file = await database.files.where('comicKey').equals(comic?.key ?? '').first();
 
       if (file) {

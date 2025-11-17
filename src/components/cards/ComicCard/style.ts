@@ -12,7 +12,8 @@ const Container = styled.div`
 `;
 
 const Cover = styled.div`
-  width: 150px; height: 195px;
+  min-width: 100px; min-height: 130px;
+  max-width: 150px; max-height: 195px;
 `;
 
 export {

@@ -3,6 +3,10 @@ import { Palette } from "../../../assets/Palette";
 
 export const Subtitle = styled.p`
   font-weight: 550;
-  size: 14px;
+  font-size: 14px;
   color: ${Palette.subtitles};
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `

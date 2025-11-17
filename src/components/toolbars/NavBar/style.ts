@@ -11,7 +11,7 @@ const Nav = styled.nav`
 
   &.horizontal {
     flex-direction: row;
-    height: 95px; width: 100%;
+    width: 100%;
     border-top: 1px solid ${Palette.details};
   }
   

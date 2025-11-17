@@ -6,6 +6,14 @@ const Container = styled.div`
 
   border-radius: 50px;
   background-color: ${Palette.details};
+
+  @media (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 52px; height: 52px;
+  }
 `;
 
 const Button = styled.button`

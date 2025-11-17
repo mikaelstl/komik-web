@@ -6,9 +6,12 @@ import { extractComicInfos } from "../../../service/utils/extractComicInfos";
 import { extractComicCover } from "../../../service/utils/extractComicCover";
 import { database } from "../../../service/db/db";
 import type { ComicFile } from "../../../service/models/ComicFile";
+import { useDevice } from "../../../hooks/useDevice";
 
 export function ReadBtn() {
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const device = useDevice();
 
   const handleClick = () => {
     fileInputRef.current?.click();
@@ -54,7 +57,7 @@ export function ReadBtn() {
       />
       <Button onClick={handleClick}>
         <BookOpenIcon width={20} />
-        <Title>Read</Title>
+        {device === 'mobile' ? <Title>Read</Title> : <></>}
       </Button>
     </Container>
   )

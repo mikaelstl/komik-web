@@ -4,10 +4,17 @@ import { Palette } from "../../../assets/Palette";
 const Nav = styled.nav`
   grid-area: k-navbar;
 
+  position: fixed;
+  bottom: 0px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
+
+  background-color: ${Palette.background};
+
+  z-index: 99999;
 
   &.horizontal {
     flex-direction: row;

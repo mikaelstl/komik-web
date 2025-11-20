@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const Grid = styled.div`
+  position: relative;
+
   display: grid;
   grid-template-areas: 
     "k-navbar k-appbar"
@@ -21,7 +23,7 @@ const Grid = styled.div`
   }
 `;
 
-const Main = styled.div`
+const Main = styled.main`
   position: relative;
   
   grid-area: k-library-content;
@@ -39,6 +41,7 @@ const Content = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   
+  width: min-content;
   height: fit-content;
 
   margin-top: 20px;
@@ -55,9 +58,9 @@ const Content = styled.div`
 `;
 
 const ReadBtnContainer = styled.div`
-  position: absolute;
+  position: fixed;
 
-  top: 90%;
+  bottom: 12%;
   left: 82%;
 `;
 

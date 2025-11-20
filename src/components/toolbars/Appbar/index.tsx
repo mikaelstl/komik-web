@@ -11,7 +11,7 @@ export function Appbar() {
     <Container className="k-appbar">
       <Logo/>
       <SearchField/>
-      {device !== "mobile" ? <ReadBtn/> : <></>}
+      {device !== "mobile" ? <ReadBtn displayText/> : <></>}
     </Container>
   )
 }

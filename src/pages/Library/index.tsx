@@ -48,7 +48,7 @@ export function Library() {
             }
           </Content>
           {
-            device === "mobile" ? <ReadBtnContainer><ReadBtn/></ReadBtnContainer> : <></>
+            device === "mobile" ? <ReadBtnContainer><ReadBtn displayText={false}/></ReadBtnContainer> : <></>
           }
         </Main>
       </Grid>

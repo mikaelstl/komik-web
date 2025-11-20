@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Palette } from "../../assets/Palette";
 
 const Grid = styled.div`
   display: grid;
@@ -29,28 +28,29 @@ const Main = styled.div`
 
   display: flex;
   justify-content: center;
-  
-  overflow: scroll;
 
-  border: 1px solid yellow;
+  height: 100%;
+
+  overflow: hidden;
 `;
 
 const Content = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
   
-  width: 100%;
   height: fit-content;
+
+  margin-top: 20px;
   
-  padding-top: 40px;
-  padding-bottom: 20px;
-  
-  border: 1px solid yellow;
+  overflow-y: scroll;
 
   @media (max-width: 768px) {
-    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    margin: 0px 10px;
+    gap: 10px;
   }
 `;
 

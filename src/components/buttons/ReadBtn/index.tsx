@@ -57,7 +57,7 @@ export function ReadBtn() {
       />
       <Button onClick={handleClick}>
         <BookOpenIcon width={20} />
-        {device === 'mobile' ? <Title>Read</Title> : <></>}
+        {device !== 'mobile' ? <Title>Read</Title> : <></>}
       </Button>
     </Container>
   )

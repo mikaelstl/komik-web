@@ -8,7 +8,6 @@ import { database } from "../../service/db/db";
 import { ItalicTitle } from "../../components/base/ItalicTitle";
 import { useEffect, useState } from "react";
 import { useDevice } from "../../hooks/useDevice";
-import { PlusIcon } from "@heroicons/react/24/solid";
 import { ReadBtn } from "../../components/buttons/ReadBtn";
 
 export function Library() {

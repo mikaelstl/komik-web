@@ -11,8 +11,6 @@ const Container = styled.div`
 
   padding: 12px 20px;
 
-  border: 1px solid blue;
-
   @media (max-width: 768px) {
     justify-content: space-between;
   }

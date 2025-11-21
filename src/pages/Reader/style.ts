@@ -22,18 +22,14 @@ const Container = styled.div`
 
   width: 100%;
   height: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const Cover = styled.main`
   position: absolute;
-
-  display: block;
-
-  min-width: auto;
-  max-width: auto;
-
-  min-height: 50%;
-  max-height: 150%;
 `;
 
 const Infos = styled.aside`
@@ -43,20 +39,47 @@ const Infos = styled.aside`
   min-width: 16%;
 
   z-index: 9999;
+
+  border: 1px solid yellow;
+
+  @media (max-width: 768px) {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const Actions = styled.aside`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   align-items: end;
   justify-content: space-between;
 
   width: fit-content; height: 100%;
+  
+  border: 1px solid green;
+
+  z-index: 99999;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 100%; height: fit-content;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
 `;
 
 const ChangePage = styled.div`
   display: flex;
   gap: 4px;
+
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 8%;
+
+    justify-content: space-between;
+    
+    width: 100%; height: fit-content;
+  }
 `;
 
 export {

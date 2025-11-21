@@ -88,7 +88,7 @@ export function Reader() {
 
     return () => {
       onCloseReader();
-    } 
+    }
   }, [comic]);
 
   const Content = () => {

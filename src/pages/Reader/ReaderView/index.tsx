@@ -1,11 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Cover } from "../style";
-import { ComicCover } from "../../../components/cards/ComicCover";
 import { LoadingSpinner } from "../../../components/LoadingSpinner";
+import { ComicPage } from "../ComicPage";
 
 interface ReaderViewProps {
   image?: Blob;
   alt?: string;
+}
+
+interface Size {
+  width: number;
+  height: number;
 }
 
 export function ReaderView({
@@ -51,7 +56,9 @@ export function ReaderView({
     >
       { loading
         ? <LoadingSpinner />
-        : <ComicCover image={src} />
+        : <ComicPage
+            image={src}
+          />
       }
     </Cover>
   )

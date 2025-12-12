@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Palette } from "../../../assets/Palette";
+import { breakpoint } from "../../../service/types/breakpoints";
 
 const Container = styled.div`
   padding: 8px 16px;
@@ -7,7 +8,7 @@ const Container = styled.div`
   border-radius: 50px;
   background-color: ${Palette.details};
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     display: flex;
     justify-content: center;
     align-items: center;

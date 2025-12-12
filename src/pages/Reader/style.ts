@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "../../service/types/breakpoints";
 
 const Main = styled.div`
   position: relative;
@@ -23,7 +24,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     flex-direction: column;
   }
 `;
@@ -42,7 +43,13 @@ const Infos = styled.aside`
 
   border: 1px solid yellow;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
+    position: fixed;
+
+    top: 0px;
+
+    width: 100%;
+    
     background-color: rgba(0, 0, 0, 0.8);
   }
 `;
@@ -61,7 +68,11 @@ const Actions = styled.aside`
 
   z-index: 99999;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
+    position: fixed;
+
+    bottom: 0px;
+
     align-items: center;
     width: 100%; height: fit-content;
     background-color: rgba(0, 0, 0, 0.8);
@@ -72,7 +83,7 @@ const ChangePage = styled.div`
   display: flex;
   gap: 4px;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     position: absolute;
     top: 8%;
 

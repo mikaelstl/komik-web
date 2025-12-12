@@ -1,15 +1,30 @@
 import type { Comic } from "../models/Comic";
 
 export function extractComicInfos(filename: string): Comic {
-  const [ title, rest ] = filename.replace('.cbz', '').split('#');
-  const [ edition, subtitle ] = rest.split('-');
+  try {
+    const [ title, rest ] = filename.replace('.cbz', '').split('#');
+    const [ edition, subtitle ] = rest.split('-');
+  
+    return {
+      title,
+      subtitle,
+      edition,
+      cover: undefined,
+      key: `${title}#${edition}`,
+      reading: true
+    }
+  } catch (error) {
+    console.error(error);
 
-  return {
-    title,
-    subtitle,
-    edition,
-    cover: undefined,
-    key: `${title}#${edition}`,
-    reading: true
+    const [ title, subtitle ] = filename.replace('.cbz', '').split('-');
+
+    return {
+      title,
+      subtitle,
+      edition: '',
+      cover: undefined,
+      key: title,
+      reading: true
+    }
   }
 }

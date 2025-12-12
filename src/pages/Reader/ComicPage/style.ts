@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Palette } from "../../../assets/Palette";
+import { breakpoint } from "../../../service/types/breakpoints";
 
 const Container = styled.div`
   display: flex;
@@ -13,8 +13,6 @@ const Container = styled.div`
   min-height: 127px;
 
   border-radius: 4px;
-
-  background-color: ${Palette.card};
 
   overflow: hidden;
 `;
@@ -32,7 +30,7 @@ const Image = styled.img`
 
   margin: 0 auto;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     width: 100%;
     height: auto;
   }

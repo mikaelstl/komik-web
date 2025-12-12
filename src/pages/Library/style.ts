@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "../../service/types/breakpoints";
 
 const Grid = styled.div`
   position: relative;
@@ -12,7 +13,7 @@ const Grid = styled.div`
 
   height: 100%;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     grid-template-areas: 
       "k-appbar k-appbar"
       "k-library-content k-library-content"
@@ -33,7 +34,7 @@ const Main = styled.main`
 
   height: 100%;
 
-  overflow: hidden;
+  overflow: auto;
 `;
 
 const Content = styled.div`
@@ -44,16 +45,16 @@ const Content = styled.div`
   width: min-content;
   height: fit-content;
 
-  margin-top: 20px;
+  margin: 20px 0px;
   
-  overflow-y: scroll;
-
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
     margin: 0px 10px;
     gap: 10px;
+    
+    overflow: auto;
   }
 `;
 

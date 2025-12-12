@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoint } from "../../../service/types/breakpoints";
 
 const Container = styled.div`
   grid-area: k-appbar;
@@ -11,7 +12,7 @@ const Container = styled.div`
 
   padding: 12px 20px;
 
-  @media (max-width: 768px) {
+  @media ${breakpoint.sm} {
     justify-content: space-between;
   }
 `;

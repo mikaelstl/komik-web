@@ -18,6 +18,8 @@
     "dexie": "^4.2.1",
     "dexie-react-hooks": "^4.2.0",
     "form-data": "^4.0.4",
+    "libarchive.js": "^2.0.2",
+    "node-unrar-js": "^2.0.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.5",

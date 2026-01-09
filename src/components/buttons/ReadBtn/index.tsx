@@ -27,7 +27,7 @@ export function ReadBtn({
       const file = evt.target.files?.[0] as File;
 
       const comic = extractComicInfos(file?.name!);
-      comic.cover = await extractComicCover(file!) ?? '';
+      comic.cover = await extractComicCover(file!);
 
       await database.comics.add(comic);
 

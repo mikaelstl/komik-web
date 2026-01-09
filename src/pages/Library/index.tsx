@@ -9,6 +9,7 @@ import { ItalicTitle } from "../../components/base/ItalicTitle";
 import { useEffect, useState } from "react";
 import { useDevice } from "../../hooks/useDevice";
 import { ReadBtn } from "../../components/buttons/ReadBtn";
+import { Archive } from "libarchive.js";
 
 export function Library() {
   const comics = useLiveQuery(() => database.comics.toArray(), []);

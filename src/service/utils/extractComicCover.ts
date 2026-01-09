@@ -1,10 +1,8 @@
-import { BlobReader, BlobWriter, ZipReader } from "@zip.js/zip.js";
-
 import { Archive } from "libarchive.js";
 
 export async function extractComicCover(file: File): Promise<Blob | undefined> {
   Archive.init({
-    workerUrl: 'libarchive.js/dist/worker-bundle.js'
+    workerUrl: '/libarchive/worker-bundle.js'
   })
 
   const ImageTypes = /\.(jpg|jpeg|png|gif)$/i;
@@ -19,24 +17,16 @@ export async function extractComicCover(file: File): Promise<Blob | undefined> {
     alert('Arquivo não suportado');
   }
 
-  const reader = new ZipReader(new BlobReader(file), { useWebWorkers: false });
-  
   try {
     const archive = await Archive.open(file);
 
-    const content = await archive.extractFiles();
+    const data = await archive.extractFiles();
+
+    const content: File[] = Object.values(data);
     
-    // const entries = await reader.getEntries();
-
-    // const entry: any = entries
-    //                 .filter(e => e.filename.match(supportedTypes) && !e.directory)
-    //                 .sort((a, b) => a.filename.localeCompare(b.filename))[0];
-
-    // console.log(entry);
-
-    console.log("CONTENT >>>>>>>");
-    console.log(content);
-    
+    const cover: File = content
+                    .filter(file => file.name.match(ImageTypes))
+                    .sort((a, b) => a.name.localeCompare(b.name))[0];
 
     if (!content) {
       alert("Nenhuma imagem encontrada no arquivo.");
@@ -45,12 +35,11 @@ export async function extractComicCover(file: File): Promise<Blob | undefined> {
     
     archive.close();
     // const blob = await entry.getData(new BlobWriter(entry.mimeType));
-    return new Blob();
+    const buffer = await cover.arrayBuffer()
+    return new Blob([new Uint8Array(buffer)], { type: file.type });
   } catch (error) {
     console.error("Erro ao extrair capa:", error);
     
     throw error;
-  } finally {
-    await reader.close();
   }
 }

@@ -1,8 +1,10 @@
 import type { Comic } from "../models/Comic";
 
 export function extractComicInfos(filename: string): Comic {
+  const ComicTypes = /\.(cbz|cbr)$/i;
+  
   try {
-    const [ title, rest ] = filename.replace('.cbz', '').split('#');
+    const [ title, rest ] = filename.replace(ComicTypes, '').split('#');
     const [ edition, subtitle ] = rest.split('-');
   
     return {

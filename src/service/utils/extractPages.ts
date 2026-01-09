@@ -1,45 +1,57 @@
-import { BlobReader, BlobWriter, ZipReader } from "@zip.js/zip.js";
+import { Archive } from "libarchive.js";
 
 function isSupportedFiles(file: File) {
-  return !file.name.toLowerCase().endsWith(".cbz") ? false : true;
+  const ComicTypes = /\.(cbz|cbr)$/i;
+
+  return !file.name.match(ComicTypes) ? false : true;
 }
 
-export async function extractPages(file: File | Blob): Promise<Blob[]> {
-  const supportedTypes = /\.(jpg|jpeg|png|gif)$/i;
+export async function extractPages(file: File): Promise<Blob[] | undefined> {
+  Archive.init({
+    workerUrl: '/libarchive/worker-bundle.js'
+  })
 
-  if (file.type !== "application/vnd.comicbook+zip" && isSupportedFiles(file as File)) {
+  const ImageTypes = /\.(jpg|jpeg|png|gif)$/i;
+
+  if (
+    file.type !== "application/vnd.comicbook+zip"
+    &&
+    file.type !== "application/vnd.comicbook-rar"
+    &&
+    isSupportedFiles(file as File)
+  ) {
     alert('Arquivo não suportado');
   }
 
-  const reader = new ZipReader(new BlobReader(file), { useWebWorkers: false });
-  
   try {
-    const entries = await reader.getEntries();
+    const archive = await Archive.open(file);
 
-    const content: any = entries
-                    .filter(e => e.filename.match(supportedTypes) && !e.directory)
-                    .sort((a, b) => a.filename.localeCompare(b.filename));
+    const data = await archive.extractFiles();
 
-    console.log(content);
-    
+    const content: File[] = Object.values(data);
+    content.sort((a, b) => a.name.localeCompare(b.name));
+
     if (!content) {
-      alert("No images found in file.");
-      return [];
+      alert("Nenhuma imagem encontrada no arquivo.");
+      return undefined;
     }
-    
+
     const pages: Blob[] = [];
 
     for (const image of content) {
-      const blob = await image.getData(new BlobWriter(image.mimeType));
-      pages.push(blob);
+      if (image.name.match(ImageTypes)) {
+        const buffer = await image.arrayBuffer()
+        const blob = new Blob([new Uint8Array(buffer)], { type: file.type });
+        pages.push(blob);
+      }
     }
+
+    archive.close();
 
     return pages;
   } catch (error) {
-    console.error("ERROR to extract pages:", error);
-    
+    console.error("Erro ao extrair capa:", error);
+
     throw error;
-  } finally {
-    await reader.close();
   }
 }

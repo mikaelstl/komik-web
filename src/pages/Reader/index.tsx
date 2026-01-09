@@ -67,12 +67,15 @@ export function Reader() {
       const file = await database.files.where('comicKey').equals(comic?.key ?? '').first();
 
       if (file) {
-        const p = await extractPages(file.blob);
-        setPages(p);
+        const p = await extractPages(
+          new File([file.blob], comic?.title ?? '', { type: file.blob.type })
+        );
+        setPages(p ?? []);
         setLoading(false);
       }
     } catch (error) {
       alert('ERROR: ' + error);
+      navigate('/library')
     }
   }
 

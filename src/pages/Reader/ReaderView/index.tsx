@@ -52,7 +52,7 @@ export function ReaderView({
         height: `${height}%`,
         transition: "width 0.1s, height 0.1s"
       }}
-      onWheel={onZoom}
+      onWheel={() => console.log('ZOOOOOMM!!')}
     >
       { loading
         ? <LoadingSpinner />

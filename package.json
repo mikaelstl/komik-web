@@ -12,6 +12,7 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "@leosingleton/fim-browser": "^2.7.0",
+    "@nozbe/watermelondb": "^0.28.0",
     "@zip.js/zip.js": "^2.8.10",
     "axios": "^1.13.2",
     "blueimp-load-image": "^5.16.0",

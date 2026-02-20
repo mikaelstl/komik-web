@@ -30,11 +30,13 @@ export function Reader() {
   const [loading, setLoading] = useState<boolean>(true);
 
   const onCloseReader = async () => {
-    navigate('..');
+    try {
+      if (readingComic) {
+        await database.reading.update(readingComic.id, { actualPage: actualPage });
+        return;
+      }
+      console.log('quadrinho não registrado... Registrando ');
 
-    if (readingComic) {
-      await database.reading.update(readingComic.id, { actualPage: actualPage })
-    } else {
       const reading: ReadingComic = {
         comicId: comic?.id ?? NaN,
         comicKey: comic?.key ?? '',
@@ -42,6 +44,9 @@ export function Reader() {
       }
 
       await database.reading.add(reading);
+    } catch (error) {
+      alert("ERROE: " + error);
+      navigate('/library');
     }
   }
 
@@ -83,23 +88,33 @@ export function Reader() {
     setLoading(true);
     if (!comic) return;
 
-    if (readingComic) {
-      setActualPage(readingComic.actualPage)
-    };
+    if (readingComic) setActualPage(readingComic.actualPage);
 
     fetchPages();
+  }, [comic]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: any) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
 
     return () => {
-      onCloseReader();
-    }
-  }, [comic]);
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, []);
 
   const Content = () => {
     return (
       <>
         <Container>
           <Infos>
-            <button onClick={onCloseReader}>
+            <button onClick={() => {
+              onCloseReader();
+              navigate('/library');
+            }}>
               <ChevronLeftIcon width={32} />
             </button>
             <ComicInfos

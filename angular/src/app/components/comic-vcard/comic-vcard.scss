@@ -1,0 +1,43 @@
+:host {
+  display: grid;
+  grid-auto-flow: row;
+  gap: 8px;
+
+  width: fit-content;
+  
+  .kmk-comic-cover {
+    width: 150px;
+    height: 195px;
+    min-width: 100px;
+    min-height: 130px;
+    max-width: 150px;
+    max-height: 195px;
+    
+    overflow: hidden;
+    
+    border-radius: 6px;
+  }
+  
+  .kmk-comic-infos {
+    display: grid;
+    grid-template-areas: 'title edition'
+                         'subtitle .';
+    grid-template-columns: 1fr min-content;
+    grid-template-rows: 1fr auto;
+
+    width: 100%;
+    height: fit-content;
+
+    .comic-title {
+      grid-area: title;
+    }
+    
+    .comic-subtitle {
+      grid-area: subtitle;
+    }
+    
+    .comic-edition {
+      grid-area: edition;
+    }
+  }
+}

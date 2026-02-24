@@ -1,0 +1,32 @@
+@use "../../../../assets/styles/palette";
+
+:host {
+  display: block;
+  padding: 8px 16px;
+
+  border-radius: 50px;
+  background-color: palette.$details;
+
+  width: fit-content;
+  height: fit-content;
+
+  #comic-picker {
+    display: none;
+  }
+  
+  .kmk-read-btn {
+    display: flex;
+    background: none;
+    gap: 8px;
+   
+    font-size: 16px;
+    font-weight: 500;
+  }
+  /* @media breakpoint.sm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      
+        width: 52px; height: 52px;
+      } */
+}

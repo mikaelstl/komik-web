@@ -13,6 +13,6 @@ import { Subtitle } from '../../base/subtitle/subtitle';
   templateUrl: './comic-vcard.html',
   styleUrl: './comic-vcard.scss',
 })
-export class ComicVcard {
+export class ComicVCard {
 
 }

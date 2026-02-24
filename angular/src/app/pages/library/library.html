@@ -1,1 +1,22 @@
-<p>library works!</p>
+<app-bar />
+<div class="kmk-library-content">
+  <div class="kmk-reading">
+    <div class="kmk-reading-header">
+      <div class="leading">
+        <ng-icon name="heroBookmarkSolid" size="20" />
+        <kmk-title>Reading</kmk-title>
+      </div>
+      <highlight-caption>Ver tudo (0)</highlight-caption>
+    </div>
+    <div class="kmk-reading-comics">
+      @for (comic of comics; track $index) {
+        <comic-vcard />
+      }
+    </div>
+  </div>
+  <div class="kmk-comics-area">
+    @for (comic of comics; track $index) {
+      <comic-vcard />
+    }
+  </div>
+</div>

@@ -1,0 +1,70 @@
+:host {
+  display: grid;
+  grid-template-rows: min-content 1fr;
+
+  height: 100%;
+
+  .kmk-library-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+
+    overflow-y: auto;
+
+    margin-top: 40px;
+
+    .kmk-reading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      gap: 12px;
+      
+      width: 100%;
+      height: min-content;
+      
+      padding: 0px 60px;
+      
+      overflow-x: hidden;
+
+      border: 1px solid red;
+
+      .kmk-reading-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        width: 100%;
+        
+        .leading {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+      }
+
+      .kmk-reading-comics {
+        display: flex;
+        gap: 20px;
+        overflow: auto;
+
+        width: 100%;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
+
+    .kmk-comics-area {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+
+      width: fit-content;
+
+      gap: 40px;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@use "../../../../assets/styles/palette";
+
+:host {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  gap: 8px;
+
+  width: fit-content;
+
+  padding: 8px;
+
+  border-radius: 50px;
+
+  background-color: palette.$items;
+
+  .kmk-text-field {
+    width: 520px;
+    height: 100%;
+
+    background: none;
+
+    margin-left: 8px;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    &::placeholder {
+      color: palette.$subtitles;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .kmk-search-btn {
+    width: 32px;
+    height: 32px;
+
+    border-radius: 50px;
+
+    background-color: palette.$details;
+  }
+}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { Title } from '../base/title/title';
+import { Title } from '../../base/title/title';
 import { ComicImage } from '../comic-image/comic-image';
-import { Subtitle } from '../base/subtitle/subtitle';
+import { Subtitle } from '../../base/subtitle/subtitle';
 
 @Component({
   selector: 'comic-vcard',

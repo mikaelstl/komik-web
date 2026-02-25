@@ -17,27 +17,8 @@
     
     border-radius: 6px;
   }
-  
-  .kmk-comic-infos {
-    display: grid;
-    grid-template-areas: 'title edition'
-                         'subtitle .';
-    grid-template-columns: 1fr min-content;
-    grid-template-rows: 1fr auto;
 
-    width: 100%;
-    height: fit-content;
-
-    .comic-title {
-      grid-area: title;
-    }
-    
-    .comic-subtitle {
-      grid-area: subtitle;
-    }
-    
-    .comic-edition {
-      grid-area: edition;
-    }
+  :hover {
+    cursor: pointer;
   }
 }

@@ -1,0 +1,59 @@
+:host {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+
+  .kmk-container {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+
+    .kmk-comic-infos {
+      position: relative;
+
+      display: flex;
+      gap: 30px;
+
+      padding: 20px;
+
+      width: 16%;
+      min-width: 16%;
+
+      z-index: 9999;
+
+      .kmk-back-btn {
+        width: fit-content;
+        height: fit-content;
+        background: none;
+      }
+    }
+
+    .kmk-reader-actions {
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      z-index: 99999;
+
+      padding: 12px;
+    }
+  }
+
+  .kmk-reader-view {
+    position: absolute;
+
+    width: 35%;
+    height: 100%;
+  }
+}

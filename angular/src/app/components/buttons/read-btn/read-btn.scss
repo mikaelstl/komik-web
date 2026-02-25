@@ -4,11 +4,10 @@
   display: block;
   padding: 8px 16px;
 
-  border-radius: 50px;
+  border-radius: 6px;
   background-color: palette.$details;
 
   width: fit-content;
-  height: fit-content;
 
   #comic-picker {
     display: none;
@@ -16,9 +15,13 @@
   
   .kmk-read-btn {
     display: flex;
+    align-items: center;
+
     background: none;
     gap: 8px;
    
+    height: 32px;
+
     font-size: 16px;
     font-weight: 500;
   }

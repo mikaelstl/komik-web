@@ -1,6 +1,8 @@
+@use "../../../assets/styles/palette";
+
 :host {
-  display: grid;
-  grid-template-rows: min-content 1fr;
+  display: flex;
+  flex-direction: column;
 
   height: 100%;
 
@@ -9,11 +11,13 @@
     flex-direction: column;
     align-items: center;
 
-    gap: 40px;
+    gap: 80px;
+
+    height: 100%;
 
     overflow-y: auto;
 
-    margin-top: 40px;
+    padding: 40px 60px;
 
     .kmk-reading {
       display: flex;
@@ -21,34 +25,39 @@
       align-items: center;
 
       gap: 12px;
-      
-      width: 100%;
-      height: min-content;
-      
-      padding: 0px 60px;
-      
-      overflow-x: hidden;
 
-      border: 1px solid red;
+      width: 100%;
 
       .kmk-reading-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        
+
         width: 100%;
-        
-        .leading {
+
+        .leading,
+        .trailing {
           display: flex;
           align-items: center;
           gap: 12px;
+        }
+
+        .trailing {
+          ng-icon {
+            color: palette.$details;
+
+            svg {
+              fill: currentColor;
+              stroke: currentColor;
+            }
+          }
         }
       }
 
       .kmk-reading-comics {
         display: flex;
         gap: 20px;
-        overflow: auto;
+        overflow-x: auto;
 
         width: 100%;
 

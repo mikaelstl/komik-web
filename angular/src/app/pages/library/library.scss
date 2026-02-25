@@ -41,17 +41,6 @@
           align-items: center;
           gap: 12px;
         }
-
-        .trailing {
-          ng-icon {
-            color: palette.$details;
-
-            svg {
-              fill: currentColor;
-              stroke: currentColor;
-            }
-          }
-        }
       }
 
       .kmk-reading-comics {
@@ -76,4 +65,8 @@
       gap: 40px;
     }
   }
+}
+
+:host ::ng-deep .chevron-up svg {
+  fill: palette.$details;
 }

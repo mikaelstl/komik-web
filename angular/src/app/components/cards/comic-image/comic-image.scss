@@ -14,8 +14,8 @@
   background-color: palette.$card;
 
   overflow: hidden;
+}
 
-  .book-icon {
-    fill: palette.$comic_icon;
-  }
+:host ::ng-deep .book-icon svg {
+  fill: palette.$comic_icon;
 }

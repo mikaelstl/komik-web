@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { heroBookOpenMini } from '@ng-icons/heroicons/mini';
 import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';

@@ -6,7 +6,7 @@ import { Screen } from './components/screen/screen';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    Screen,
+    Screen
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'

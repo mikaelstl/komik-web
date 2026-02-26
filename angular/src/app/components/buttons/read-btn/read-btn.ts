@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from "@ng-icons/core";
 import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';
+import { ComicExtractorService } from '../../../service/comicExtractor.service';
 
 @Component({
   selector: 'read-btn',
@@ -16,8 +17,13 @@ import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';
       name="comic-picker"
       id="comic-picker"
       accept="cbz, cbr"
-    >
-    <button class="kmk-read-btn" type="button">
+      (change)="choseFile($event)"
+    #hiddenfileinput>
+
+    <button 
+      class="kmk-read-btn"
+      type="button"
+      (click)="hiddenfileinput.click()">
       <ng-icon name="heroBookOpenSolid" size="20"/>
       Read
     </button>
@@ -25,5 +31,35 @@ import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';
   styleUrl: './read-btn.scss',
 })
 export class ReadBtn {
+  private file: File | null = null;
 
+  constructor(private comicExtractor: ComicExtractorService) { }
+
+  async choseFile(event: any) {
+    event.preventDefault();
+    this.file = event.target?.files[0];
+
+    try {
+      if (this.file) {
+        const comic: Comic = this.comicExtractor.extractInfos(this.file.name);
+        console.log(comic);
+        comic.cover = await this.comicExtractor.extractCover(this.file);
+
+        console.log(comic);
+      } else {
+        alert('No file selected')
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+
+type Comic = {
+  title: string;
+  subtitle: string;
+  edition: string;
+  cover: Blob | undefined;
+  key: string;
+  reading: boolean;
 }

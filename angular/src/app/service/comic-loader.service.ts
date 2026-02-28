@@ -57,7 +57,7 @@ export class ComicLoaderService {
           if (data.error) {
             reject(data.error);
           } else {
-            resolve(data.result)
+            resolve(data.result);
           }
         }
 

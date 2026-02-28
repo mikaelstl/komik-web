@@ -5,6 +5,12 @@ import { Title } from "../../components/base/title/title";
 import { NgIcon, provideIcons } from "@ng-icons/core";
 import { heroBookmarkSolid, heroChevronDownSolid, heroChevronUpSolid } from '@ng-icons/heroicons/solid';
 import { HighlightCaption } from "../../components/base/highlight-caption/highlight-caption";
+import { Comic } from '../../service/models/Comic';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { from } from 'rxjs';
+import { liveQuery } from 'dexie';
+import { database } from '../../service/db/db';
+import { ItalicTitle } from '../../components/base/italic-title/italic-title';
 
 @Component({
   selector: 'app-library',
@@ -13,7 +19,8 @@ import { HighlightCaption } from "../../components/base/highlight-caption/highli
     AppBar,
     Title,
     NgIcon,
-    HighlightCaption
+    HighlightCaption,
+    ItalicTitle
 ],
   providers: [
     provideIcons({
@@ -26,5 +33,8 @@ import { HighlightCaption } from "../../components/base/highlight-caption/highli
   styleUrl: './library.scss',
 })
 export class LibraryPage {
-  comics: number[] = Array.from({length: 12}, (_, i) => i);
+  comics = toSignal(
+    from(liveQuery(() => database.comics.toArray())),
+    { initialValue: [] as Comic[]}
+  );
 }

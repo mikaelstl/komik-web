@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgIcon, provideIcons } from "@ng-icons/core";
 import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';
 import { ComicLoaderService } from '../../../service/comic-loader.service';
+import { ComicManager } from '../../../service/managers/comic.manager';
 
 @Component({
   selector: 'read-btn',
@@ -33,7 +34,7 @@ import { ComicLoaderService } from '../../../service/comic-loader.service';
 export class ReadBtn {
   private file: File | null = null;
 
-  constructor(private comicLoader: ComicLoaderService) { }
+  constructor(private comicManager: ComicManager) { }
 
   async choseFile(event: any) {
     event.preventDefault();
@@ -41,13 +42,7 @@ export class ReadBtn {
 
     try {
       if (this.file) {
-        const comic: Comic = this.comicLoader.extractInfos(this.file.name);
-        console.log(comic);
-
-        const result = await this.comicLoader.extractCover(this.file) as ArrayBuffer[];
-        comic.cover = new Blob([new Uint8Array(result[0])], { type: this.file.type });
-        
-        console.log(comic);
+        this.comicManager.save(this.file);
       } else {
         alert('No file selected')
       }

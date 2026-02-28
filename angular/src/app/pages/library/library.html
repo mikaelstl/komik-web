@@ -13,14 +13,16 @@
       </div>
     </div>
     <div class="kmk-reading-comics">
-      @for (comic of comics; track $index) {
+      <!-- @for (comic of comics; track $index) {
         <comic-vcard />
-      }
+      } -->
     </div>
   </div>
   <div class="kmk-comics-area">
-    @for (comic of comics; track $index) {
+    @for (comic of comics(); track comic.id) {
       <comic-vcard />
+    } @empty {
+      <italic-title>Without Comics</italic-title>
     }
   </div>
 </div>

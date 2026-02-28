@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-italic-title',
+  selector: 'italic-title',
   imports: [],
-  templateUrl: './italic-title.html',
-  styleUrl: './italic-title.scss',
+  template: `
+    <i class="kmk-italic-title"><ng-content/></i>
+  `,
+  styles: `
+    .kmk-italic-title {
+      font-size: 24px;
+      font-weight: 600;
+    }
+  `,
 })
 export class ItalicTitle {
 

@@ -1,13 +1,13 @@
 /// <reference lib="webworker" />
 
 import { Archive } from "libarchive.js";
-import { extractComicCover } from "../utils/extractComicCover";
 import { extractPages } from "../utils/extractPages";
+import { fetchCover } from "../utils/extractCover";
 
 type WorkerTypeActions = 'cover' | 'pages';
 
 type WorkerAction = {
-  [action: string]: (file: File) => void// Promise<ArrayBuffer | null>
+  [action: string]: (file: File) => Promise<ArrayBuffer[]>
 }
 
 export type WorkerListnerData = {
@@ -24,7 +24,7 @@ async function initArchive() {
       import.meta.url
     ).toString();
 
-    console.log('Worker URL:', workerUrl);
+    // console.log('Worker URL:', workerUrl);
 
     await Archive.init({
       workerUrl: workerUrl
@@ -35,24 +35,20 @@ async function initArchive() {
 
 addEventListener('message', async ({ data }) => {
   const actions: WorkerAction = {
-    cover: extractComicCover,
+    cover: fetchCover,
     // pages: extractPages
   }
 
   await initArchive();
 
-  console.log('Archive iniciado');
-
   const { action, payload } = data;
 
   try {
-    console.log('Try/Catch iniciado');
-
     const method = actions[action];
 
     const result = await method(payload);
-    console.log('Extração iniciada');
-    postMessage('ok'/* {action, result}, [result as ArrayBuffer] */)
+
+    postMessage({action, result}, result)
   } catch (err) {
     console.log(err);
 

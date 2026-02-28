@@ -5,7 +5,7 @@ import { WorkerListnerData } from "./workers/archives.worker";
 @Injectable({
   providedIn: 'root'
 })
-export class ComicExtractorService {
+export class ComicLoaderService {
   private readonly worker: Worker;
   
   constructor () {
@@ -45,7 +45,7 @@ export class ComicExtractorService {
     }
   }
 
-  async extractCover(file: File): Promise<Blob> {
+  async extractCover(file: File) {
     return new Promise(
       (resolve, reject) => {
         if (!this.worker) {
@@ -57,7 +57,7 @@ export class ComicExtractorService {
           if (data.error) {
             reject(data.error);
           } else {
-            resolve(data.blob)
+            resolve(data.result)
           }
         }
 

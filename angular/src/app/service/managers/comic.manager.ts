@@ -3,6 +3,7 @@ import { ComicLoaderService } from '../comic-loader.service';
 import { Comic } from '../models/Comic';
 import { ComicFile } from '../models/ComicFile';
 import { database } from '../db/db';
+import { WorkerResponse } from '../workers/archives.worker';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +17,10 @@ export class ComicManager {
       const comic: Comic = this.comicLoader.extractInfos(file.name);
       console.log(comic)
       
-      const result = await this.comicLoader.extractCover(file) as ArrayBuffer[];
-      comic.cover = new Blob([new Uint8Array(result[0])], { type: file.type });
+      const result = await this.comicLoader.fetchCover(file) as WorkerResponse;
+      console.log(result);
+      
+      comic.cover = new Blob([new Uint8Array(result.buffer as ArrayBuffer)], { type: result.type });
     
       await database.comics.add(comic);
 

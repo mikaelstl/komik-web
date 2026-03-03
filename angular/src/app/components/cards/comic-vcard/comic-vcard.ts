@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Title } from '../../base/title/title';
 import { ComicImage } from '../comic-image/comic-image';
 import { Subtitle } from '../../base/subtitle/subtitle';
@@ -15,6 +15,12 @@ import { ComicInfos } from '../../misc/comic-infos/comic-infos';
   styleUrl: './comic-vcard.scss',
 })
 export class ComicVCard {
+  @Input() title: string = '';
+  @Input() subtitle: string = '';
+  @Input() edition: string = '';
+
+  @Input() cover?: Blob;
+
   constructor (private router: Router) {}
 
   @HostListener('click', ['$event'])

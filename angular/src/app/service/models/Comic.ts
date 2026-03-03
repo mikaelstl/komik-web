@@ -4,6 +4,6 @@ export interface Comic {
   title: string;
   subtitle: string;
   edition: string;
-  cover: Blob | undefined;
+  cover: Blob | null;
   reading: boolean;
 }

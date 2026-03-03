@@ -4,7 +4,7 @@ type ArchiveResult = {
   [key: string]: any
 }
 
-export async function fetchCover(file: File):  Promise<ArrayBuffer[]> {
+export async function fetchCover(file: File):  Promise<ExtractionResult | null> {
   const data = await extract(file);
   return extractCover(data);
 }
@@ -31,7 +31,12 @@ async function extract(file: File): Promise<any> {
   return data;
 }
 
-async function extractCover(data: any): Promise<ArrayBuffer[]> {
+export type ExtractionResult = {
+  buffer: ArrayBuffer,
+  type: string
+}
+
+async function extractCover(data: any): Promise<ExtractionResult | null> {
   const ImageTypes = /\.(jpg|jpeg|png|gif)$/i;
 
   const keys = Object.keys(data);
@@ -57,10 +62,10 @@ async function extractCover(data: any): Promise<ArrayBuffer[]> {
 
   if (!files) {
     alert("No images found in the file.");
-    return [];
+    return null;
   }
 
   const buffer = await cover.arrayBuffer();
   
-  return [buffer];
+  return { buffer, type: `image/${cover.name.split('.').pop()?.toLowerCase()}`};
 }

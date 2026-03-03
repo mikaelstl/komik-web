@@ -20,7 +20,11 @@
   </div>
   <div class="kmk-comics-area">
     @for (comic of comics(); track comic.id) {
-      <comic-vcard />
+      <comic-vcard
+        [title]="comic.title"
+        [subtitle]="comic.subtitle"
+        [edition]="comic.edition"
+      />
     } @empty {
       <italic-title>Without Comics</italic-title>
     }

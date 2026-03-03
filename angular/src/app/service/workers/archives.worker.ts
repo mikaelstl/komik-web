@@ -2,12 +2,17 @@
 
 import { Archive } from "libarchive.js";
 import { extractPages } from "../utils/extractPages";
-import { fetchCover } from "../utils/extractCover";
+import { ExtractionResult, fetchCover } from "../utils/extractCover";
+
+export type WorkerResponse = {
+  buffer: ArrayBuffer | null,
+  type: string | undefined
+}
 
 type WorkerTypeActions = 'cover' | 'pages';
 
 type WorkerAction = {
-  [action: string]: (file: File) => Promise<ArrayBuffer[]>
+  [action: string]: (file: File) => Promise<ExtractionResult | null>
 }
 
 export type WorkerListnerData = {
@@ -46,9 +51,13 @@ addEventListener('message', async ({ data }) => {
   try {
     const method = actions[action];
 
-    const result = await method(payload);
+    const result: ExtractionResult | null = await method(payload);
 
-    postMessage({action, result}, result)
+    if (result) {
+      postMessage({buffer: result.buffer, type: result.type }, [result.buffer])
+    } else {
+      postMessage({ buffer: null, type: null });
+    }
   } catch (err) {
     console.log(err);
 

@@ -37,4 +37,13 @@ export class LibraryPage {
     from(liveQuery(() => database.comics.toArray())),
     { initialValue: [] as Comic[]}
   );
+
+  createCoverURL(cover?: Blob): string {
+    if (cover) {
+      const url = URL.createObjectURL(cover)
+      return url;
+    } else {
+      return '';
+    }
+  }
 }

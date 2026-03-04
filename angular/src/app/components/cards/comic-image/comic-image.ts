@@ -19,5 +19,5 @@ import { heroBookOpenSolid } from '@ng-icons/heroicons/solid';
 export class ComicImage {
   @Input() image?: string = '';
 
-  @Input() alt?: string;
+  @Input() alt?: string = '';
 }

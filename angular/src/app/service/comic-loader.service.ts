@@ -25,20 +25,20 @@ export class ComicLoaderService {
         title,
         subtitle,
         edition,
-        cover: null,
+        cover: undefined,
         key: `${title}#${edition}`,
         reading: false
       }
     } catch (error) {
       console.error(error);
 
-      const title = filename.replace('.cbz', '');
+      const [title, ext] = filename.split('.');
 
       return {
         title,
         subtitle:'',
         edition: '',
-        cover: null,
+        cover: undefined,
         key: title,
         reading: false
       }

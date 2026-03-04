@@ -19,7 +19,7 @@ export class ComicVCard {
   @Input() subtitle: string = '';
   @Input() edition: string = '';
 
-  @Input() cover?: Blob;
+  @Input() cover: string = '';
 
   constructor (private router: Router) {}
 

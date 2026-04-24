@@ -104,5 +104,3 @@ Por isso, é necessário utilizar navegadores atualizados.
 
 - **IndexedDB** — armazenamento local persistente
 - **Web Workers** — processamento em background (extração de arquivos)
-
-> 💡 Recomenda-se o uso do navegador :contentReference[oaicite:0]{index=0} ou :contentReference[oaicite:1]{index=1} atualizados para melhor desempenho.

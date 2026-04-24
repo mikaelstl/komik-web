@@ -1,59 +1,108 @@
-# KomikAngular
+<div align="center">
+  <img src="https://raw.githubusercontent.com/mikaelstl/komik-web/angular/public/favicon.svg" width="52"/>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.4.
+  # Komik Web
 
-## Development server
+  **Leitor de quadrinhos moderno, privado e direto no navegador.**
 
-To start a local development server, run:
+  [![Angular Version](https://img.shields.io/badge/Angular-21-dd0031?style=flat-square&logo=angular)](https://angular.dev/)
+</div>
 
+Este projeto foi criado como uma alternativa web para o projeto [Komik](https://github.com/mikaelstl/komik).
+
+O intuito deste projeto é disponibilizar uma aplicação web para leitura de quadrinhos (arquivos .cbz e .cbr). Com possibilidade de escolha dos quadrinhos no dispositivo e persistencia no navegador.
+
+### Recursos
+
+- **Leitura Offline**: Graças ao IndexedDB com Dexie.js.
+- **Suporte Multi-formato**: Extração nativa de .cbz (Zip) e .cbr (Rar) sem necessidade de servidor.
+- **Persistência de Progresso**: O app lembra em qual página você parou.
+- **Privacidade**: Os arquivos não são enviados para nenhum servidor; tudo acontece no lado do cliente.
+
+## Funcionamento da aplicação
+
+A aplicação roda completamente no navegador sem a necessidade de conexão com servidores externos.
+
+#### Manipulação de arquivos
+
+Para a manipulação de arquivos foi utilizada a biblioteca [libarchive.js](https://www.npmjs.com/package/libarchive.js) para lidar com a extração em memória dos arquivos. Esta biblioteca foi escolhida pela sua facilidade de uso e segurança, além da praticidade, já que é possivel manipular tanto arquivos Zip, quanto arquivos Rar.
+
+> [!IMPORTANT]
+> Esta aplicação se utiliza de WebWorkers para a extração dos arquivos de forma assíncrona, para garantir que a descompressão de arquivos pesados não trave a interface.
+
+#### Persistência
+
+A persistência dos dados é realizada através do IndexDB, ferramenta presente nos navegadores modernos para salvar dados no próprio navegador, foi utilizada a biblioteca [dexie.js](https://dexie.org/) por sua simplicidade de uso. Isto garante:
+
+- Independência de sistemas externos;
+- Persistência de progresso: o sistema saberá qual página você parou;
+- Sistema de "biblioteca": O usuário não precisará abrir o mesmo arquivo toda vez que desejar lê-lo.
+
+## Tecnologias utilizadas
+
+- Node.js 20 [Site Oficial](https://nodejs.org/en/download) / [NVM](https://github.com/nvm-sh/nvm)
+- Angular 21 [Installation](https://angular.dev/installation)
+- Typescript
+
+### Principais bibliotecas
+
+- [Angular](https://angular.dev/) - framework principal para estruturação da aplicação.
+- [dexie.js](https://dexie.org/) - biblioteca para manipulação do IndexedBD.
+- [libarchive.js](https://www.npmjs.com/package/libarchive.js) - biblioteca para manipulação e extração de arquivos compactados.
+
+## Executando
+
+Para interessados em estudar e observar o funcionamento da aplicação em sua máquina. Siga os passos.
+
+#### Clone o repositório
+
+**HTTPS**
 ```bash
-ng serve
+git clone https://github.com/mikaelstl/komik-web.git
+cd komik-web
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+**SSH**
 ```bash
-ng generate component component-name
+git clone git@github.com:mikaelstl/komik-web.git
+cd komik-web
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+#### Instale as dependências
 
 ```bash
-ng generate --help
+npm i
 ```
 
-## Building
-
-To build the project run:
+#### Inicie o projeto
 
 ```bash
-ng build
+npm start
 ```
+A aplicação estará disponível em: [https://localhost:4200](https://localhost:4200)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Compatibilidade de navegadores
 
-## Running unit tests
+A aplicação depende de APIs modernas do navegador, como **IndexedDB** e **Web Workers**.  
+Por isso, é necessário utilizar navegadores atualizados.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+### Navegadores suportados (versões mínimas)
 
-```bash
-ng test
-```
+- **Google Chrome** — 57+
+- **Mozilla Firefox** — 55+
+- **Microsoft Edge (Chromium)** — 79+
+- **Safari** — 11+
+- **Opera** — 44+
 
-## Running end-to-end tests
+### Observações
 
-For end-to-end (e2e) testing, run:
+- Navegadores antigos (como Internet Explorer) **não são suportados**
+- Alguns navegadores móveis podem apresentar limitações de performance ao lidar com arquivos grandes
+- Para melhor experiência, recomenda-se o uso das versões mais recentes do navegador
 
-```bash
-ng e2e
-```
+### Tecnologias utilizadas
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- **IndexedDB** — armazenamento local persistente
+- **Web Workers** — processamento em background (extração de arquivos)
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+> 💡 Recomenda-se o uso do navegador :contentReference[oaicite:0]{index=0} ou :contentReference[oaicite:1]{index=1} atualizados para melhor desempenho.

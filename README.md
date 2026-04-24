@@ -6,6 +6,8 @@
   **Leitor de quadrinhos moderno, privado e direto no navegador.**
 
   [![Angular Version](https://img.shields.io/badge/Angular-21-dd0031?style=flat-square&logo=angular)](https://angular.dev/)
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+  ![Status: WIP](https://img.shields.io/badge/status-WIP-blue?style=flat-square)
 </div>
 
 Este projeto foi criado como uma alternativa web para o projeto [Komik](https://github.com/mikaelstl/komik).

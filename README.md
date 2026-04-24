@@ -104,3 +104,7 @@ Por isso, é necessário utilizar navegadores atualizados.
 
 - **IndexedDB** — armazenamento local persistente
 - **Web Workers** — processamento em background (extração de arquivos)
+
+## Licença
+
+Komik é licenciado sob a [Licença MIT](https://github.com/mikaelstl/komik-web/tree/main?tab=MIT-1-ov-file#readme)

@@ -107,4 +107,4 @@ Por isso, é necessário utilizar navegadores atualizados.
 
 ## Licença
 
-Komik é licenciado sob a [Licença MIT](https://github.com/mikaelstl/komik-web/tree/main?tab=MIT-1-ov-file#readme)
+Komik é licenciado sob a [Licença MIT](https://github.com/mikaelstl/komik-web/blob/main/LICENSE)
